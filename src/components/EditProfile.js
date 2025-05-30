@@ -28,7 +28,7 @@ const EditProfile = () => {
 
     // On mount, retrieve user data from localStorage (if any)
     useEffect(() => {
-      const storedUser = JSON.parse(localStorage.getItem('user')) || { username: 'Alex' }; // Fallback to 'Alex'
+      const storedUser = JSON.parse(localStorage.getItem('user')) || { username: 'La Place' }; // Fallback to 'Alex'
       setUserData(storedUser);
     }, []);
   
