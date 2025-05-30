@@ -47,27 +47,49 @@ const SignUpPage = () => {
     }
     setError('');
 
-    // Supabase Auth sign up
-    const { user, error: signUpError } = await supabase.auth.signUp({
-      email: formData.email,
-      password: formData.password,
-      options: {
-        data: {
-          name: formData.name,
-          companyname: formData.companyname,
-          type: formData.type,
-          eventType: formData.eventType,
-          serviceType: formData.serviceType,
-          address: formData.address,
-          taxid: formData.taxid,
-          phone: formData.phone
+    try {
+      // 1. Sign up the user with Supabase Auth
+      const { data: authData, error: signUpError } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: {
+          data: {
+            full_name: formData.name,
+            companyname: formData.companyname,
+            type: formData.type,
+            eventType: formData.eventType,
+            serviceType: formData.serviceType,
+            address: formData.address,
+            taxid: formData.taxid,
+            phone: formData.phone
+          }
         }
-      }
-    });
+      });
 
-    if (signUpError) {
-      setError(signUpError.message);
-      return;
+      if (signUpError) throw signUpError;
+
+      // 2. Create profile in profiles table
+      const { error: profileError } = await supabase
+        .from('profiles')
+        .insert([
+          { 
+            id: authData.user.id,
+            full_name: formData.name,
+            created_at: new Date(),
+            updated_at: new Date()
+          }
+        ]);
+
+      if (profileError) throw profileError;
+
+      // 3. Redirect based on user type
+      if (formData.type === "Admin") {
+        navigate("/SuppliersPage");
+      } else if (formData.type === "Supplier") {
+        navigate("/SupplierHomepage");
+      }
+    } catch (error) {
+      setError(error.message);
     }
 
     // Redirect based on user selection

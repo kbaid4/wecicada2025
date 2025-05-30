@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LogoutButton from './LogoutButton';
+import UserProfile from './UserProfile';
 
 const SuppliersPage = () => {
-  // Retrieve user's name from localStorage (set at sign up)
-  const storedName = localStorage.getItem('signupName');
-  const displayName = storedName ? storedName : 'User';
-  const displayInitial = displayName.charAt(0).toUpperCase();
+
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOption, setSortOption] = useState('');
   const navigate = useNavigate();
@@ -104,10 +102,7 @@ const SuppliersPage = () => {
         {item.name}
       </button>
     ))}
-    {/* User Profile Circle */}
-    <div className="user-profile">
-      {displayInitial}
-    </div>
+    <UserProfile showName={false} />
     <LogoutButton className="nav-btn" style={{ color: '#A888B5', background: 'none', marginLeft: '12px' }} />
   </div>
 
@@ -119,7 +114,9 @@ const SuppliersPage = () => {
           <div className="header-left">
             <div className="welcome-section">
               <h1 className="welcome-text">Welcome,</h1>
-              <div className="username">{displayName}</div>
+              <div className="username">
+                <UserProfile showName={true} />
+              </div>
             </div>
             <div className="action-btns">
               <button className="primary-btn" onClick={handleCreateEventClick}>Create Event</button>
