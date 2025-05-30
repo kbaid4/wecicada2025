@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import UserProfile from './UserProfile';
 import styles from './HotelsListPage.module.css';
 
 const digitalMarketingAgenciesData = [
@@ -87,7 +88,7 @@ const DigitalMarketingAgenciesPage = () => {
               {item.name}
             </button>
           ))}
-          <div className={styles['user-profile']}>A</div>
+          <UserProfile showName={false} />
         </div>
       </nav>
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import UserProfile from './UserProfile';
 
 const Events = () => {
   const navigate = useNavigate();
@@ -26,10 +27,7 @@ const Events = () => {
   }, [location]);
 
   // Navigation data
-  // Dynamic user info
-  const storedName = localStorage.getItem('signupName');
-  const displayName = storedName ? storedName : 'User';
-  const displayInitial = displayName.charAt(0).toUpperCase();
+  // User info will be handled by UserProfile component
 
   const mainNavItems = [
     { name: 'Home', path: '/SuppliersPage' },
@@ -92,7 +90,7 @@ const Events = () => {
               {item.name}
             </button>
           ))}
-          <div className="user-profile">{displayInitial}</div>
+          <UserProfile showName={false} />
         </div>
       </nav>
 
@@ -102,7 +100,7 @@ const Events = () => {
           <div className="header-left">
             <div className="welcome-section">
               <h1 className="welcome-text">Welcome,</h1>
-              <div className="username">{displayName}</div>
+              <UserProfile showName={true} />
             </div>
             <div className="action-btns">
               <button className="primary-btn" onClick={handleCreateEventClick}>Create Event</button>
@@ -245,19 +243,8 @@ const Events = () => {
           background: #441752;
         }
 
-        .user-profile {
-          width: 32px;
-          height: 32px;
-          background: #A888B5;
-          color: white;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 500;
-        }
+        /* User avatar styles now handled by UserProfile component */
 
-        /* Main Content Styles */
         .content-area {
           padding: 32px 40px;
           margin-top: 64px;
@@ -287,12 +274,7 @@ const Events = () => {
           margin: 0;
         }
 
-        .username {
-          font-size: 24px;
-          color: #441752;
-          font-weight: 500;
-          margin-top: 4px;
-        }
+        /* User name styles now handled by UserProfile component */
 
         .action-btns {
           display: flex;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
+import UserProfile from './UserProfile';
 
 const StarRating = ({ rating }) => {
   return (
@@ -82,9 +83,7 @@ const EditProfile = () => {
               {item.name}
             </button>
           ))}
-          <div style={styles.userProfile}>
-            {userData.username[0]} {/* Display the first letter of the username */}
-          </div>
+          <UserProfile showName={false} />
         </div>
       </nav>
 

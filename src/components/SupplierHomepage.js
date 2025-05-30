@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LogoutButton from './LogoutButton';
+import UserProfile from './UserProfile';
 
 const SupplierHomepage = () => {
   // Determine display name for the supplier
@@ -96,7 +97,7 @@ const SupplierHomepage = () => {
               {item.name}
             </button>
           ))}
-          <div className="user-profile">{(supplierName ? supplierName.charAt(0) : (supplierEmail ? supplierEmail.charAt(0) : 'S')).toUpperCase()}</div>
+          <UserProfile showName={false} />
           <LogoutButton className="nav-btn" style={{ color: '#A888B5', background: 'none', marginLeft: '12px' }} />
         </div>
       </nav>
@@ -105,9 +106,9 @@ const SupplierHomepage = () => {
       <main className="content-area">
         <header className="content-header">
           <div className="header-left">
-            <div className="welcome-section">
-              <h1 className="welcome-text">Welcome,</h1>
-              <div className="username">{supplierName || supplierEmail || 'Supplier'}</div>
+            <div className="welcome-section" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <h1 className="welcome-text" style={{ margin: 0 }}>Welcome,</h1>
+              <UserProfile showName={true} className="welcome-username" />
             </div>
             <div className="action-btns">
               <button className="primary-btn" onClick={() => navigate('/EditProfile')}>Edit Profile</button>

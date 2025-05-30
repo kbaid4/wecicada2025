@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import UserProfile from './UserProfile';
 
 const CreateTaskPage = () => {
   const { eventId } = useParams();
   const navigate = useNavigate();
 
-  // Get user info from localStorage
-  const storedName = localStorage.getItem('signupName');
-  const displayName = storedName ? storedName : 'User';
-  const displayInitial = displayName.charAt(0).toUpperCase();
+  // User info will be handled by UserProfile component
 
   // Add an activeNav state similar to the Events component
   const [activeNav, setActiveNav] = useState('Events');
@@ -102,7 +100,7 @@ const CreateTaskPage = () => {
               {item.name}
             </button>
           ))}
-          <div className="user-profile">{displayInitial}</div>
+          <UserProfile showName={false} />
         </div>
       </nav>
 
@@ -112,7 +110,7 @@ const CreateTaskPage = () => {
             <h1 className="page-title">Create Task</h1>
             <div className="welcome-message">
               <span>Welcome,</span>
-              <span className="username">{displayName}</span>
+              <UserProfile showName={true} />
             </div>
           </div>
         </header>

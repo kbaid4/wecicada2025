@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import UserProfile from './UserProfile';
 import styles from './HotelsListPage.module.css';
 
 const securityHygieneData = [
@@ -18,7 +19,6 @@ const rightNavItems = [
   { name: 'My Work', path: '/my-work' },
   { name: 'My Team', path: '/my-team' },
 ];
-const userProfile = { name: 'A' };
 
 const SecurityHygienePage = () => {
   const [search, setSearch] = useState('');
@@ -49,7 +49,7 @@ const SecurityHygienePage = () => {
           {rightNavItems.map(item => (
             <button key={item.name} className={styles['nav-btn']} onClick={() => navigate(item.path)}>{item.name}</button>
           ))}
-          <div className={styles['user-profile']}>{userProfile.name}</div>
+          <UserProfile showName={false} />
         </div>
       </nav>
       <div className={styles['hotels-toolbar']}>

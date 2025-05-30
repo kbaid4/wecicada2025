@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
+import UserProfile from './UserProfile';
 
 const StarRating = ({ rating }) => {
   return (
@@ -82,18 +83,7 @@ const SuppliersProfile = () => {
               {item.name}
             </button>
           ))}
-          <div style={styles.userProfile}>
-            {(() => {
-              const supplierName = localStorage.getItem('supplierName');
-              const signupName = localStorage.getItem('signupName');
-              const name = supplierName || signupName || 'Supplier';
-              return name
-                .split(' ')
-                .map(word => word[0])
-                .join('')
-                .toUpperCase();
-            })()}
-          </div>
+          <UserProfile showName={false} />
         </div>
       </nav>
 

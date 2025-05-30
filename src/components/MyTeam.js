@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import UserProfile from './UserProfile';
 
 // Helper to get user context from localStorage (reuse from MessagesPage)
 function getUserContext() {
@@ -94,9 +95,7 @@ const MyTeam = () => {
               {item.name}
             </button>
           ))}
-          <div className="user-profile">
-            {user.name && user.name.length > 0 ? user.name.charAt(0).toUpperCase() : 'U'}
-          </div>
+          <UserProfile showName={false} />
         </div>
       </nav>
       <div className="myteam-content">

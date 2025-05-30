@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import UserProfile from './UserProfile';
 
 const EventsManagementPage = () => {
   const navigate = useNavigate();
@@ -10,10 +11,7 @@ const EventsManagementPage = () => {
   const [currentEvent, setCurrentEvent] = useState(null);
   const [tasks, setTasks] = useState([]);
 
-  // Dynamic user info
-  const storedName = localStorage.getItem('signupName');
-  const displayName = storedName ? storedName : 'User';
-  const displayInitial = displayName.charAt(0).toUpperCase();
+  // User info will be handled by UserProfile component
 
   const mainNavItems = [
     { name: 'Home', path: '/SuppliersPage' },
@@ -123,7 +121,7 @@ const EventsManagementPage = () => {
               {item.name}
             </button>
           ))}
-          <div className="user-profile">{displayInitial}</div>
+          <UserProfile showName={false} />
         </div>
       </nav>
 

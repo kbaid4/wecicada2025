@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import UserProfile from './UserProfile';
 
 function getUserContext() {
   const isSupplier = localStorage.getItem('isSupplier') === 'true';
@@ -70,9 +71,7 @@ const SupplierMessagesPage = () => {
         <div className="nav-section right">
           <button className="nav-btn" onClick={() => window.location.href='/SupplierWork'}>My Work</button>
           <button className="nav-btn" onClick={() => window.location.href='/SupplierTeam'}>My Team</button>
-          <div className="user-profile">
-            {(localStorage.getItem('supplierName') ? localStorage.getItem('supplierName').charAt(0) : (localStorage.getItem('supplierEmail') ? localStorage.getItem('supplierEmail').charAt(0) : 'S')).toUpperCase()}
-          </div>
+          <UserProfile showName={false} />
         </div>
       </nav>
       <main className="content-area">

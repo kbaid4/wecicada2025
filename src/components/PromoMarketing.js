@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import UserProfile from './UserProfile';
 
 const PromoMarketing = () => {
-  // Retrieve user's name from localStorage (set at sign up)
-  const storedName = localStorage.getItem('signupName');
-  const displayName = storedName ? storedName : 'User';
-  const displayInitial = displayName.charAt(0).toUpperCase();
+  // User info will be handled by UserProfile component
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOption, setSortOption] = useState('');
   const navigate = useNavigate();
@@ -103,7 +101,7 @@ const PromoMarketing = () => {
               {item.name}
             </button>
           ))}
-          <div className="user-profile">{displayInitial}</div>
+          <UserProfile showName={false} />
         </div>
       </nav>
 
@@ -113,7 +111,7 @@ const PromoMarketing = () => {
           <div className="header-left">
             <div className="welcome-section">
               <h1 className="welcome-text">Welcome,</h1>
-              <div className="username">{displayName}</div>
+              <UserProfile showName={true} />
             </div>
             <div className="action-btns">
               <button className="primary-btn" onClick={handleCreateEventClick}>Create Event</button>

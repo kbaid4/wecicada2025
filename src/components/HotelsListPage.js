@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LogoutButton from './LogoutButton';
+import UserProfile from './UserProfile';
 import styles from './HotelsListPage.module.css';
 
 // Dummy data for hotels
@@ -22,9 +23,7 @@ const rightNavItems = [
   { name: 'My Work', path: '/my-work' },
   { name: 'My Team', path: '/my-team' },
 ];
-const userProfile = {
-  name: 'A', // Demo initial
-};
+// User info will be handled by UserProfile component
 
 const HotelsListPage = () => {
   const [search, setSearch] = useState('');
@@ -78,7 +77,7 @@ const HotelsListPage = () => {
               {item.name}
             </button>
           ))}
-          <div className={styles['user-profile']}>{userProfile.name}</div>
+          <UserProfile showName={false} />
         </div>
       </nav>
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import UserProfile from './UserProfile';
 
 // Helper to get user context from localStorage (simple demo)
 function getUserContext() {
@@ -131,10 +132,7 @@ const MessagesPage = () => {
               {item.name}
             </button>
           ))}
-          {/* Dynamic user profile initial based on signup name */}
-          <div className="user-profile">
-            {user.name && user.name.length > 0 ? user.name.charAt(0).toUpperCase() : 'U'}
-          </div>
+          <UserProfile showName={false} />
         </div>
       </nav>
 
@@ -143,7 +141,7 @@ const MessagesPage = () => {
           <div className="header-left">
             <div className="welcome-section">
               <h1 className="welcome-text">Welcome,</h1>
-              <div className="username">{user.name}</div>
+              <UserProfile showName={true} />
             </div>
 
           </div>
@@ -294,11 +292,8 @@ const MessagesPage = () => {
           background: #441752;
         }
 
-        .user-profile {
-          width: 32px;
-          height: 32px;
-          background: #A888B5;
-          color: white;
+        /* User profile styles now handled by UserProfile component */
+        .user-avatar {
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -336,12 +331,7 @@ const MessagesPage = () => {
           margin: 0;
         }
 
-        .username {
-          font-size: 24px;
-          color: #441752;
-          font-weight: 500;
-          margin-top: 4px;
-        }
+        /* User name styles now handled by UserProfile */
 
         .action-btns {
           display: flex;

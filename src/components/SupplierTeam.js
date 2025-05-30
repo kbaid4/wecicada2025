@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import UserProfile from './UserProfile';
 
 // Helper to get user context from localStorage
 function getUserContext() {
@@ -94,9 +95,7 @@ const SupplierTeam = () => {
               {item.name}
             </button>
           ))}
-          <div className="user-profile">
-            {(localStorage.getItem('supplierName') ? localStorage.getItem('supplierName').charAt(0) : (localStorage.getItem('supplierEmail') ? localStorage.getItem('supplierEmail').charAt(0) : 'S')).toUpperCase()}
-          </div>
+          <UserProfile showName={false} />
         </div>
       </nav>
       <div className="supplierteam-content">
