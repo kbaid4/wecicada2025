@@ -34,13 +34,13 @@ const CateringService = () => {
 
   // Venue data with corrected image paths
   const venueTypes = [
-    { name: 'Full-Service Caterers', image: '4.png' },
-    { name: 'Speciality Cuisine Caterers', image: '7.png' },
-    { name: 'Food Trucks', image: '6.png' },
-    { name: 'Beverage Suppliers', image: '1.png' },
-    { name: 'Bartending Services', image: '3.png' },
-    { name: 'Dessert Caterers', image: '5.png' },
-    { name: 'Corporate Catering Services', image: '2.png' },
+    { name: 'Full-Service Caterers', image: '4.png', path: '/full-service-caterers' },
+    { name: 'Speciality Cuisine Caterers', image: '7.png', path: '/specialty-cuisine-caterers' },
+    { name: 'Food Trucks', image: '6.png', path: '/food-trucks' },
+    { name: 'Beverage Suppliers', image: '1.png', path: '/beverage-suppliers' },
+    { name: 'Bartending Services', image: '3.png', path: '/bartending-services' },
+    { name: 'Dessert Caterers', image: '5.png', path: '/dessert-caterers' },
+    { name: 'Corporate Catering Services', image: '2.png', path: '/corporate-catering' },
   ];
 
   const handleCreateEventClick = () => {
@@ -173,7 +173,8 @@ const CateringService = () => {
             <div 
               key={venue.name}
               className={`venue-card ${selectedVenue === venue.name ? 'selected' : ''}`}
-              onClick={() => setSelectedVenue(venue.name)}
+              onClick={() => navigate(venue.path)}
+              style={{ cursor: 'pointer' }}
             >
               <div className="card-image">
                 <img 

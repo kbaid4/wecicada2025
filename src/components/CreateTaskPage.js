@@ -136,14 +136,14 @@ const CreateTaskPage = () => {
                   />
                 </div>
                 <div className="input-group">
-                  <label>Liaison</label>
+                  <label>Supplier</label>
                   <select
                     value={taskData.liaison}
                     onChange={(e) => setTaskData({...taskData, liaison: e.target.value})}
                   >
-                    <option value="">Select Liaison</option>
+                    <option value="">Select Supplier</option>
                     {liaisonOptions.length === 0 && (
-                      <option disabled>No liaisons found.</option>
+                      <option disabled>No suppliers found.</option>
                     )}
                     {liaisonOptions.map(liaison => (
                       <option key={liaison} value={liaison}>

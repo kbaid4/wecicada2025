@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import LogoutButton from './LogoutButton';
 
 const SuppliersPage = () => {
   // Retrieve user's name from localStorage (set at sign up)
@@ -44,6 +45,22 @@ const SuppliersPage = () => {
     { name: 'Restaurants & Bars', image: '8.png' }
   ];
 
+  const venueSlugMap = {
+    'Hotels': '/hotels',
+    'Conference Centers': '/conference-centers',
+    'Banquet Halls': '/banquet-halls',
+    'Outdoor Venues': '/outdoor-venues',
+    'Stadiums/Arenas': '/stadiums-arenas',
+    'Theaters/Art Centers': '/theaters-art-centers',
+    'Historic Sites & Monuments': '/historic-sites-monuments',
+    'Restaurants & Bars': '/restaurants-bars',
+  };
+
+  const handleVenueCardClick = (venueName) => {
+    const path = venueSlugMap[venueName];
+    if (path) navigate(path);
+  };
+
   const handleCreateEventClick = () => {
     navigate('/CreateEventPage'); // Navigate to the Create Event page
   };
@@ -54,6 +71,7 @@ const SuppliersPage = () => {
       {/* Top Navigation Bar */}
       <nav className="top-nav">
       <div className="nav-section left">
+
     <img 
       src={`${process.env.PUBLIC_URL}/images/landingpage/logo.png`} 
       alt="CITADA Logo" 
@@ -74,20 +92,24 @@ const SuppliersPage = () => {
   </div>
         
   <div className="nav-section right">
-  {userNavItems.map(item => (
-    <button
-      key={item.name}
-      className="nav-btn"
-      onClick={() => {
-        setActiveNav(item.name);
-        navigate(item.path);
-      }}
-    >
-      {item.name}
-    </button>
-  ))}
-  <div className="user-profile">{displayInitial}</div>
-</div>
+    {userNavItems.map(item => (
+      <button
+        key={item.name}
+        className={`nav-btn ${activeNav === item.name ? 'active' : ''}`}
+        onClick={() => {
+          setActiveNav(item.name);
+          navigate(item.path);
+        }}
+      >
+        {item.name}
+      </button>
+    ))}
+    {/* User Profile Circle */}
+    <div className="user-profile">
+      {displayInitial}
+    </div>
+    <LogoutButton className="nav-btn" style={{ color: '#A888B5', background: 'none', marginLeft: '12px' }} />
+  </div>
 
       </nav>
 
@@ -174,19 +196,7 @@ const SuppliersPage = () => {
               className={`venue-card ${selectedVenue === venue.name ? 'selected' : ''}`}
               onClick={() => {
                 setSelectedVenue(venue.name);
-                const profileVenues = [
-                  'Hotels',
-                  'Conference Centers',
-                  'Banquet Halls',
-                  'Outdoor Venues',
-                  'Stadiums/Arenas',
-                  'Theaters/Art Centers',
-                  'Historic Sites & Monuments',
-                  'Restaurants & Bars'
-                ];
-                if (profileVenues.includes(venue.name)) {
-                  navigate('/SuppliersProfile');
-                }
+                handleVenueCardClick(venue.name);
               }}
             >
               <div className="card-image">

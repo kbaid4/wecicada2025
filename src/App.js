@@ -35,7 +35,81 @@ import SupplierTeam from './components/SupplierTeam';
 import SupplierEvents from './components/SupplierEvents';
 import SupplierMessagesPage from './components/SupplierMessagesPage';
 import MyTeam from './components/MyTeam';
+import TestSupabase from './TestSupabase';
+import HotelsListPage from './components/HotelsListPage';
+import ConferenceCentersPage from './components/ConferenceCentersPage';
+import BanquetHallsPage from './components/BanquetHallsPage';
+import OutdoorVenuesPage from './components/OutdoorVenuesPage';
+import StadiumsArenasPage from './components/StadiumsArenasPage';
+import TheatersArtCentersPage from './components/TheatersArtCentersPage';
+import HistoricSitesMonumentsPage from './components/HistoricSitesMonumentsPage';
+import RestaurantsBarsPage from './components/RestaurantsBarsPage';
+import PermitsPage from './components/PermitsPage';
+import LicensesPage from './components/LicensesPage';
+import SecurityHygienePage from './components/SecurityHygienePage';
+import PromoProductSuppliersPage from './components/PromoProductSuppliersPage';
+import PrintingServicesPage from './components/PrintingServicesPage';
+import GraphicDesignersPage from './components/GraphicDesignersPage';
+import BrandingAgenciesPage from './components/BrandingAgenciesPage';
+import DigitalMarketingAgenciesPage from './components/DigitalMarketingAgenciesPage';
+import SocialMediaMarketingPage from './components/SocialMediaMarketingPage';
+import ContentCreationServicesPage from './components/ContentCreationServicesPage';
+import VirtualRealityPage from './components/VirtualRealityPage';
+import AugmentedRealityPage from './components/AugmentedRealityPage';
+import LiveStreamingPage from './components/LiveStreamingPage';
+import EventAnalyticsPage from './components/EventAnalyticsPage';
+import AudioEquipmentRentalPage from './components/AudioEquipmentRentalPage';
+import VisualEquipmentRentalPage from './components/VisualEquipmentRentalPage';
+import LightingEquipmentRentalPage from './components/LightingEquipmentRentalPage';
+import StageSetDesignPage from './components/StageSetDesignPage';
+import TechnicalSupportServicesPage from './components/TechnicalSupportServicesPage';
+import AVProductionCompaniesPage from './components/AVProductionCompaniesPage';
+import AVLiveStreamingServicesPage from './components/AVLiveStreamingServicesPage';
+import DSS from './components/DSS';
+import FloristsPage from './components/FloristsPage';
+import EventDecoratorsPage from './components/EventDecoratorsPage';
+import ThematicDesignSpecialistsPage from './components/ThematicDesignSpecialistsPage';
+import BalloonArtistsPage from './components/BalloonArtistsPage';
+import TableSettingRentalPage from './components/TableSettingRentalPage';
+import BannerPrintingServicesPage from './components/BannerPrintingServicesPage';
+import EventFurnitureRentalPage from './components/EventFurnitureRentalPage';
+import FurnitureRentalCompaniesPage from './components/FurnitureRentalCompaniesPage';
+import LinenRentalServicesPage from './components/LinenRentalServicesPage';
+import TablewareRentalServicesPage from './components/TablewareRentalServicesPage';
+import TentRentalCompaniesPage from './components/TentRentalCompaniesPage';
+import InflatableStructuresPage from './components/InflatableStructuresPage';
+import EventFlooringSuppliersPage from './components/EventFlooringSuppliersPage';
+import OutdoorEquipmentRentalPage from './components/OutdoorEquipmentRentalPage';
+import LiveBandsPage from './components/LiveBandsPage';
+import DJsPage from './components/DJsPage';
+import MusiciansPage from './components/MusiciansPage';
+import ComediansPage from './components/ComediansPage';
+import MagiciansIllusionistsPage from './components/MagiciansIllusionistsPage';
+import DancersChoreographersPage from './components/DancersChoreographersPage';
+import CircusActsPage from './components/CircusActsPage';
+import InteractivePerformersPage from './components/InteractivePerformersPage';
+import EventPhotographersPage from './components/EventPhotographersPage';
+import VideographyServicesPage from './components/VideographyServicesPage';
+import DroneVideographyServicesPage from './components/DroneVideographyServicesPage';
+import PhotoBoothRentalPage from './components/PhotoBoothRentalPage';
+import EventAlbumPrintingServicesPage from './components/EventAlbumPrintingServicesPage';
+import EditingPostProductionServicesPage from './components/EditingPostProductionServicesPage';
 
+// Transportation Services
+import ShuttleServicesPage from './components/ShuttleServicesPage';
+import LimousineServicesPage from './components/LimousineServicesPage';
+import BusCoachRentalsPage from './components/BusCoachRentalsPage';
+import CarRentalCompaniesPage from './components/CarRentalCompaniesPage';
+import ChauffeurServicesPage from './components/ChauffeurServicesPage';
+import AirportTransferServicesPage from './components/AirportTransferServicesPage';
+import BikeRentalServicesPage from './components/BikeRentalServicesPage';
+import FullServiceCaterersPage from './components/FullServiceCaterersPage';
+import SpecialtyCuisineCaterersPage from './components/SpecialtyCuisineCaterersPage';
+import FoodTrucksPage from './components/FoodTrucksPage';
+import BeverageSuppliersPage from './components/BeverageSuppliersPage';
+import BartendingServicesPage from './components/BartendingServicesPage';
+import DessertCaterersPage from './components/DessertCaterersPage';
+import CorporateCateringPage from './components/CorporateCateringPage';
 
 function App() {
   return (
@@ -50,6 +124,75 @@ function App() {
       <Route path="/AddSupplier" element={<AddSupplier />} />
       <Route path="/SuppliersProfile" element={<SuppliersProfile />} />
       <Route path="/Events" element={<Events />} />
+      <Route path="/hotels" element={<HotelsListPage />} />
+      <Route path="/conference-centers" element={<ConferenceCentersPage />} />
+      <Route path="/banquet-halls" element={<BanquetHallsPage />} />
+      <Route path="/outdoor-venues" element={<OutdoorVenuesPage />} />
+      
+      {/* Furniture & Rental Services Routes */}
+      <Route path="/furniture-rental" element={<FurnitureRentalCompaniesPage />} />
+      <Route path="/linen-rental" element={<LinenRentalServicesPage />} />
+      <Route path="/tableware-rental" element={<TablewareRentalServicesPage />} />
+      <Route path="/tent-rental" element={<TentRentalCompaniesPage />} />
+      <Route path="/inflatable-structures" element={<InflatableStructuresPage />} />
+      <Route path="/event-flooring" element={<EventFlooringSuppliersPage />} />
+      <Route path="/outdoor-equipment" element={<OutdoorEquipmentRentalPage />} />
+      
+      {/* Entertainment Professionals Routes */}
+      <Route path="/live-bands" element={<LiveBandsPage />} />
+      <Route path="/djs" element={<DJsPage />} />
+      <Route path="/musicians" element={<MusiciansPage />} />
+      <Route path="/comedians" element={<ComediansPage />} />
+      <Route path="/magicians-illusionists" element={<MagiciansIllusionistsPage />} />
+      <Route path="/dancers-choreographers" element={<DancersChoreographersPage />} />
+      <Route path="/circus-acts" element={<CircusActsPage />} />
+      <Route path="/interactive-performers" element={<InteractivePerformersPage />} />
+      <Route path="/stadiums-arenas" element={<StadiumsArenasPage />} />
+      <Route path="/theaters-art-centers" element={<TheatersArtCentersPage />} />
+      <Route path="/historic-sites-monuments" element={<HistoricSitesMonumentsPage />} />
+      <Route path="/restaurants-bars" element={<RestaurantsBarsPage />} />
+      <Route path="/promo-product-suppliers" element={<PromoProductSuppliersPage />} />
+      <Route path="/printing-services" element={<PrintingServicesPage />} />
+      <Route path="/graphic-designers" element={<GraphicDesignersPage />} />
+      <Route path="/branding-agencies" element={<BrandingAgenciesPage />} />
+      <Route path="/digital-marketing-agencies" element={<DigitalMarketingAgenciesPage />} />
+      <Route path="/social-media-marketing" element={<SocialMediaMarketingPage />} />
+      <Route path="/content-creation-services" element={<ContentCreationServicesPage />} />
+      <Route path="/virtual-reality" element={<VirtualRealityPage />} />
+      <Route path="/augmented-reality" element={<AugmentedRealityPage />} />
+      <Route path="/live-streaming" element={<LiveStreamingPage />} />
+      <Route path="/event-analytics" element={<EventAnalyticsPage />} />
+      <Route path="/full-service-caterers" element={<FullServiceCaterersPage />} />
+      <Route path="/specialty-cuisine-caterers" element={<SpecialtyCuisineCaterersPage />} />
+      <Route path="/food-trucks" element={<FoodTrucksPage />} />
+      <Route path="/beverage-suppliers" element={<BeverageSuppliersPage />} />
+      <Route path="/bartending-services" element={<BartendingServicesPage />} />
+      <Route path="/dessert-caterers" element={<DessertCaterersPage />} />
+      <Route path="/corporate-catering" element={<CorporateCateringPage />} />
+      
+      {/* Decor & Styling Services Routes */}
+      <Route path="/dss" element={<DSS />} />
+      <Route path="/florists" element={<FloristsPage />} />
+      <Route path="/event-decorators" element={<EventDecoratorsPage />} />
+      <Route path="/thematic-design-specialists" element={<ThematicDesignSpecialistsPage />} />
+      <Route path="/balloon-artists" element={<BalloonArtistsPage />} />
+      <Route path="/table-setting-rental" element={<TableSettingRentalPage />} />
+      <Route path="/banner-printing-services" element={<BannerPrintingServicesPage />} />
+      <Route path="/event-furniture-rental" element={<EventFurnitureRentalPage />} />
+      
+      <Route path="/permits" element={<PermitsPage />} />
+      <Route path="/licenses" element={<LicensesPage />} />
+      <Route path="/securityhygiene" element={<SecurityHygienePage />} />
+      <Route path="/audio-equipment-rental" element={<AudioEquipmentRentalPage />} />
+      <Route path="/visual-equipment-rental" element={<VisualEquipmentRentalPage />} />
+      <Route path="/lighting-equipment-rental" element={<LightingEquipmentRentalPage />} />
+      <Route path="/stage-set-design" element={<StageSetDesignPage />} />
+      <Route path="/technical-support-services" element={<TechnicalSupportServicesPage />} />
+      <Route path="/av-production-companies" element={<AVProductionCompaniesPage />} />
+      <Route path="/av-live-streaming-services" element={<AVLiveStreamingServicesPage />} />
+      <Route path="/permits" element={<PermitsPage />} />
+      <Route path="/licenses" element={<LicensesPage />} />
+      <Route path="/securityhygiene" element={<SecurityHygienePage />} />
       <Route path="/EventsManagementPage/:eventId" element={<EventsManagementPage />} />
       <Route path="/EventsManagementPage" element={<EventsManagementPage />} />
       <Route path="/EditEventPage/:eventId" element={<EditEventPage />} />
@@ -64,7 +207,24 @@ function App() {
       <Route path="/EntPrf" element={<EntPrf />} />
       <Route path="/Furniture" element={<Furniture />} />
       <Route path="/PhotoVid" element={<PhotoVid />} />
+      
+      {/* Photo & Video Services Routes */}
+      <Route path="/event-photographers" element={<EventPhotographersPage />} />
+      <Route path="/videography-services" element={<VideographyServicesPage />} />
+      <Route path="/drone-videography" element={<DroneVideographyServicesPage />} />
+      <Route path="/photo-booth-rental" element={<PhotoBoothRentalPage />} />
+      <Route path="/album-printing" element={<EventAlbumPrintingServicesPage />} />
+      <Route path="/post-production" element={<EditingPostProductionServicesPage />} />
+      
+      {/* Transportation Services Routes */}
       <Route path="/Transportation" element={<Transportation />} />
+      <Route path="/shuttle-services" element={<ShuttleServicesPage />} />
+      <Route path="/limousine-services" element={<LimousineServicesPage />} />
+      <Route path="/bus-coach-rentals" element={<BusCoachRentalsPage />} />
+      <Route path="/car-rental-companies" element={<CarRentalCompaniesPage />} />
+      <Route path="/chauffeur-services" element={<ChauffeurServicesPage />} />
+      <Route path="/airport-transfer-services" element={<AirportTransferServicesPage />} />
+      <Route path="/bike-rental-services" element={<BikeRentalServicesPage />} />
       <Route path="/PromoMarketing" element={<PromoMarketing />} />
       <Route path="/Techpro" element={<Techpro />} />
       <Route path="/SupplierSide" element={<SupplierSide />} />
@@ -79,10 +239,11 @@ function App() {
       <Route path="/SupplierMessagesPage" element={<SupplierMessagesPage />} />
       <Route path="/my-team" element={<MyTeam />} />
       <Route path="/MessagesPage" element={<MessagesPage />} />
+      <Route path="/test-supabase" element={<TestSupabase />} />
+      <Route path="/hotels" element={<HotelsListPage />} />
     </Routes>
   );
 }
 
 export default App;
-
 

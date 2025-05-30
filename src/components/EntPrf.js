@@ -32,16 +32,16 @@ const EntPrf = () => {
     { name: 'Legal', path: '/Legal' }
   ];
 
-  // Venue data with corrected image paths
+  // Venue data with corrected image paths and navigation
   const venueTypes = [
-    { name: 'Live Bands', image: '13.png' },
-    { name: 'DJs', image: '5.png' },
-    { name: 'Musicians', image: '21.png' },
-    { name: 'Comedians', image: '20.png' },
-    { name: 'Magicians/Illusionists', image: '6.png' },
-    { name: 'Dancers/Choreographers', image: '8.png' },
-    { name: 'Circus Acts', image: '9.png' },
-    { name: 'Interactive Performers', image: '19.png' },
+    { name: 'Live Bands', image: '13.png', path: '/live-bands' },
+    { name: 'DJs', image: '5.png', path: '/djs' },
+    { name: 'Musicians', image: '21.png', path: '/musicians' },
+    { name: 'Comedians', image: '20.png', path: '/comedians' },
+    { name: 'Magicians/Illusionists', image: '6.png', path: '/magicians-illusionists' },
+    { name: 'Dancers/Choreographers', image: '8.png', path: '/dancers-choreographers' },
+    { name: 'Circus Acts', image: '9.png', path: '/circus-acts' },
+    { name: 'Interactive Performers', image: '19.png', path: '/interactive-performers' },
   ];
 
   const handleCreateEventClick = () => {
@@ -173,7 +173,8 @@ const EntPrf = () => {
             <div 
               key={venue.name}
               className={`venue-card ${selectedVenue === venue.name ? 'selected' : ''}`}
-              onClick={() => setSelectedVenue(venue.name)}
+              onClick={() => navigate(venue.path)}
+              style={{ cursor: 'pointer' }}
             >
               <div className="card-image">
                 <img 

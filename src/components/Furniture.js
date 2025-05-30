@@ -32,15 +32,15 @@ const Furniture = () => {
     { name: 'Legal', path: '/Legal' }
   ];
 
-  // Venue data with corrected image paths
+  // Venue data with corrected image paths and navigation
   const venueTypes = [
-    { name: 'Furniture Rental Companies', image: '1.png' },
-    { name: 'Linen Rental Services', image: '3.png' },
-    { name: 'Tableware Remtaç Services', image: '5.png' },
-    { name: 'Tent Rental Companies', image: '7.png' },
-    { name: 'Inflatable Structures', image: '9.png' },
-    { name: 'Event Flooring Suppliers', image: '11.png' },
-    { name: 'Outdoor Equipment Rental', image: '13.png' },
+    { name: 'Furniture Rental Companies', image: '1.png', path: '/furniture-rental' },
+    { name: 'Linen Rental Services', image: '3.png', path: '/linen-rental' },
+    { name: 'Tableware Rental Services', image: '5.png', path: '/tableware-rental' },
+    { name: 'Tent Rental Companies', image: '7.png', path: '/tent-rental' },
+    { name: 'Inflatable Structures', image: '9.png', path: '/inflatable-structures' },
+    { name: 'Event Flooring Suppliers', image: '11.png', path: '/event-flooring' },
+    { name: 'Outdoor Equipment Rental', image: '13.png', path: '/outdoor-equipment' },
   ];
 
   const handleCreateEventClick = () => {
@@ -172,7 +172,8 @@ const Furniture = () => {
             <div 
               key={venue.name}
               className={`venue-card ${selectedVenue === venue.name ? 'selected' : ''}`}
-              onClick={() => setSelectedVenue(venue.name)}
+              onClick={() => navigate(venue.path)}
+              style={{ cursor: 'pointer' }}
             >
               <div className="card-image">
                 <img 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import LogoutButton from './LogoutButton';
 
 const SupplierHomepage = () => {
   // Determine display name for the supplier
@@ -96,6 +97,7 @@ const SupplierHomepage = () => {
             </button>
           ))}
           <div className="user-profile">{(supplierName ? supplierName.charAt(0) : (supplierEmail ? supplierEmail.charAt(0) : 'S')).toUpperCase()}</div>
+          <LogoutButton className="nav-btn" style={{ color: '#A888B5', background: 'none', marginLeft: '12px' }} />
         </div>
       </nav>
 

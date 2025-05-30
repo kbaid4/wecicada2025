@@ -39,6 +39,17 @@ const Legal = () => {
     { name: 'Security & Hygiene', image: '21.png' },
   ];
 
+  const legalVenueSlugMap = {
+    'Permits': '/permits',
+    'Licenses': '/licenses',
+    'Security & Hygiene': '/securityhygiene',
+  };
+
+  const handleLegalVenueCardClick = (venueName) => {
+    const path = legalVenueSlugMap[venueName];
+    if (path) navigate(path);
+  };
+
   const handleCreateEventClick = () => {
     navigate('/CreateEventPage'); // Navigate to the Create Event page
   };
@@ -167,7 +178,10 @@ const Legal = () => {
             <div 
               key={venue.name}
               className={`venue-card ${selectedVenue === venue.name ? 'selected' : ''}`}
-              onClick={() => setSelectedVenue(venue.name)}
+              onClick={() => {
+                setSelectedVenue(venue.name);
+                handleLegalVenueCardClick(venue.name);
+              } }
             >
               <div className="card-image">
                 <img 

@@ -385,9 +385,9 @@ const EditEventPage = () => {
               </div>
               <div className="form-column">
                 <div className="input-group">
-                  <label>Add Admin</label>
+                  <label>Add Planner</label>
                   <select name="addadmin" value={formData.addadmin} onChange={handleChange}>
-                    <option value="">Select Admin</option>
+                    <option value="">Select Planner</option>
                     {adminOptions.map(admin => {
                       if (admin && typeof admin === 'object' && admin.name && admin.email) {
                         return (

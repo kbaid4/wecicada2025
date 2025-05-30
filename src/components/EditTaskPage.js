@@ -196,9 +196,9 @@ const EditTaskPage = () => {
                   <input type="number" name="budget" value={taskData.budget} onChange={handleInputChange} />
                 </div>
                 <div className="input-group">
-                  <label>Liaison</label>
+                  <label>Supplier</label>
                   <select name="liaison" value={taskData.liaison} onChange={handleInputChange}>
-                    <option value="">Select Liaison</option>
+                    <option value="">Select Supplier</option>
                     {liaisonOptions.map((liaison, idx) => (
                       <option key={idx} value={liaison}>{liaison}</option>
                     ))}

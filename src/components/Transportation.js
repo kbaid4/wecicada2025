@@ -32,16 +32,16 @@ const Transportation = () => {
     { name: 'Legal', path: '/Legal' }
   ];
 
-  // Venue data with corrected image paths
+  // Venue data with corrected image paths and navigation
   const venueTypes = [
-    { name: 'Shuttle Services', image: '21.png' },
-    { name: 'Limousine Services', image: '19.png' },
-    { name: 'Bus/Coach Rentals', image: '17.png' },
-    { name: 'Photo Booth Rental', image: '15.png' },
-    { name: 'Car Rental Companies', image: '13.png' },
-    { name: 'Chauffeur Services', image: '11.png' },
-    { name: 'Airport Transfer Services', image: '9.png' },
-    { name: 'Bike Rental Services', image: '7.png' },
+    { name: 'Shuttle Services', image: '21.png', path: '/shuttle-services' },
+    { name: 'Limousine Services', image: '19.png', path: '/limousine-services' },
+    { name: 'Bus/Coach Rentals', image: '17.png', path: '/bus-coach-rentals' },
+    { name: 'Photo Booth Rental', image: '15.png', path: '/photo-booth-rental' },
+    { name: 'Car Rental Companies', image: '13.png', path: '/car-rental-companies' },
+    { name: 'Chauffeur Services', image: '11.png', path: '/chauffeur-services' },
+    { name: 'Airport Transfer Services', image: '9.png', path: '/airport-transfer-services' },
+    { name: 'Bike Rental Services', image: '7.png', path: '/bike-rental-services' },
   ];
 
   const handleCreateEventClick = () => {
@@ -173,7 +173,13 @@ const Transportation = () => {
             <div 
               key={venue.name}
               className={`venue-card ${selectedVenue === venue.name ? 'selected' : ''}`}
-              onClick={() => setSelectedVenue(venue.name)}
+              onClick={() => {
+                setSelectedVenue(venue.name);
+                if (venue.path) {
+                  navigate(venue.path);
+                }
+              }}
+              style={{ cursor: 'pointer' }}
             >
               <div className="card-image">
                 <img 

@@ -32,14 +32,14 @@ const PhotoVid = () => {
     { name: 'Legal', path: '/Legal' }
   ];
 
-  // Venue data with corrected image paths
+  // Venue data with corrected image paths and navigation
   const venueTypes = [
-    { name: 'Event Photographers', image: '2.png' },
-    { name: 'Videography Services', image: '4.png' },
-    { name: 'Drone Videography Services', image: '6.png' },
-    { name: 'Photo Booth Rental', image: '8.png' },
-    { name: 'Event Album Printing Services', image: '10.png' },
-    { name: 'Editing & Post-Production Services', image: '12.png' },
+    { name: 'Event Photographers', image: '8.png', path: '/event-photographers' },
+    { name: 'Videography Services', image: '9.png', path: '/videography-services' },
+    { name: 'Drone Videography Services', image: '10.png', path: '/drone-videography' },
+    { name: 'Photo Booth Rental', image: '11.png', path: '/photo-booth-rental' },
+    { name: 'Event Album Printing Services', image: '12.png', path: '/album-printing' },
+    { name: 'Editing & Post-Production Services', image: '13.png', path: '/post-production' },
   ];
 
   const handleCreateEventClick = () => {
@@ -171,7 +171,8 @@ const PhotoVid = () => {
             <div 
               key={venue.name}
               className={`venue-card ${selectedVenue === venue.name ? 'selected' : ''}`}
-              onClick={() => setSelectedVenue(venue.name)}
+              onClick={() => navigate(venue.path)}
+              style={{ cursor: 'pointer' }}
             >
               <div className="card-image">
                 <img 

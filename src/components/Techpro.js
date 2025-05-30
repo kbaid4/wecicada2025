@@ -32,12 +32,12 @@ const Techpro = () => {
     { name: 'Legal', path: '/Legal' }
   ];
 
-  // Venue data with corrected image paths
+  // Venue data with corrected image paths and routes
   const venueTypes = [
-    { name: 'Virtual Reality (VR)', image: '2.png' },
-    { name: 'Augmented Reality (AR)', image: '15.png' },
-    { name: 'Live Streaming & Webcasting Platformss', image: '19.png' },
-    { name: 'Event Analytics Solutions', image: '16.png' },
+    { name: 'Virtual Reality (VR)', image: '2.png', path: '/virtual-reality' },
+    { name: 'Augmented Reality (AR)', image: '15.png', path: '/augmented-reality' },
+    { name: 'Live Streaming & Webcasting Platforms', image: '19.png', path: '/live-streaming' },
+    { name: 'Event Analytics Solutions', image: '16.png', path: '/event-analytics' },
   ];
 
   const handleCreateEventClick = () => {
@@ -165,11 +165,12 @@ const Techpro = () => {
 
         {/* Venue Grid with Correct Image Paths */}
         <div className="venue-grid">
-          {venueTypes.map(venue => (
+          {venueTypes.map((venue, index) => (
             <div 
-              key={venue.name}
+              key={index} 
               className={`venue-card ${selectedVenue === venue.name ? 'selected' : ''}`}
-              onClick={() => setSelectedVenue(venue.name)}
+              onClick={() => navigate(venue.path)}
+              style={{ cursor: 'pointer' }}
             >
               <div className="card-image">
                 <img 

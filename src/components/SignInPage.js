@@ -1,5 +1,7 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from './SignInPage.module.css';
+import { supabase } from '../supabaseClient';
 
 const SignInPage = () => {
   const navigate = useNavigate();
@@ -10,16 +12,26 @@ const SignInPage = () => {
   });
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!credentials.email || !credentials.password) {
       setError("Please fill in all fields");
       return;
     }
 
-    console.log("Signing in with:", credentials);
     setError("");
+    // Supabase Auth sign in
+    const { data, error: signInError } = await supabase.auth.signInWithPassword({
+      email: credentials.email,
+      password: credentials.password
+    });
 
+    if (signInError) {
+      setError(signInError.message);
+      return;
+    }
+
+    // Redirect on successful login
     navigate("/SuppliersPage"); 
   };
 
@@ -30,19 +42,34 @@ const SignInPage = () => {
     });
   };
 
+  // Track window width for responsive background image
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  React.useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const bgStyle = windowWidth > 600 ? {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/images/landingpage/loginbg.png)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundAttachment: 'fixed',
+  } : undefined;
+
   return (
-    <div className="main-container">
-      <div className="signin-container">
-        <div className="logo-container">
+    <div className={styles['main-container']} style={bgStyle}>
+      <div className={styles['signin-container']}>
+        <div className={styles['logo-container']}>
           <img 
-            src={`/images/landingpage/logo.png`} 
+            src={`${process.env.PUBLIC_URL}/images/landingpage/logo.png`} 
             alt="CITADA Logo" 
-            className="site-logo"
+            className={styles['site-logo']}
           />
         </div>
 
-        <form onSubmit={handleSubmit} className="signin-form">
-          <div className="form-group">
+        <form onSubmit={handleSubmit} className={styles['signin-form']}>
+          <div className={styles['form-group']}>
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -54,7 +81,7 @@ const SignInPage = () => {
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles['form-group']}>
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -66,108 +93,12 @@ const SignInPage = () => {
             />
           </div>
 
-          {error && <div className="error-message">{error}</div>}
+          {error && <div className={styles['error-message']}>{error}</div>}
 
-          <button type="submit" className="signin-button" onClick={() => navigate("/SuppliersPage")} >Sign In</button>
+          <button type="submit" className={styles['signin-button']}>Sign In</button>
         </form>
 
-        <a href="#" className="forgot-password" style={{ color: '#441752', textDecoration: 'underline', cursor: 'pointer', marginTop: '16px', display: 'inline-block' }} onClick={e => e.preventDefault()}>Forgot Password?</a>
-
-        <style jsx>{`
-          .main-container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: url('/images/landingpage/loginbg.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-          }
-
-          .signin-container {
-            max-width: 400px;
-            width: 90%;
-            padding: 2rem;
-            background: rgba(168, 136, 181, 0.95);
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-          }
-
-          .logo-container {
-            text-align: center;
-            margin: 0 auto 2rem;
-            max-width: 200px;
-          }
-
-          .site-logo {
-            width: 100%;
-            height: auto;
-            max-height: 80px;
-            object-fit: contain;
-          }
-
-          .signin-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-          }
-
-          .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-          }
-
-          label {
-            font-weight: 500;
-            color: #555;
-          }
-
-          input {
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-          }
-
-          input:focus {
-            outline: none;
-            border-color: #646cff;
-          }
-
-          .signin-button {
-            background-color: #441752;
-            color: white;
-            padding: 1rem;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-          }
-
-          .error-message {
-            color: #ff0000;
-            margin: 0.5rem 0;
-            text-align: center;
-          }
-
-          .forgot-password {
-            display: block;
-            text-align: center;
-            margin-top: 1.5rem;
-            color: #441752;
-            text-decoration: none;
-          }
-
-          .forgot-password:hover {
-            text-decoration: underline;
-          }
-        `}</style>
+        <a href="#" className={styles['forgot-password']}>Forgot Password?</a>
       </div>
     </div>
   );

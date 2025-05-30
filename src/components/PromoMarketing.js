@@ -43,6 +43,25 @@ const PromoMarketing = () => {
     { name: 'Content Creation Services', image: '9.png' },
   ];
 
+  const marketingVenueSlugMap = {
+    'Promo Product Suppliers': '/promo-product-suppliers',
+    'Printing Services': '/printing-services',
+    'Graphic Designers': '/graphic-designers',
+    'Branding Agencies': '/branding-agencies',
+    'Digital Marketing Agencies': '/digital-marketing-agencies',
+    'Social Media Marketing Services': '/social-media-marketing',
+    'Content Creation Services': '/content-creation-services'
+  };
+
+  const handleMarketingVenueClick = (venueName) => {
+    const path = marketingVenueSlugMap[venueName];
+    if (path) {
+      navigate(path);
+    } else {
+      setSelectedVenue(venueName);
+    }
+  };
+
   const handleCreateEventClick = () => {
     navigate('/CreateEventPage'); // Navigate to the Create Event page
   };
@@ -172,7 +191,7 @@ const PromoMarketing = () => {
             <div 
               key={venue.name}
               className={`venue-card ${selectedVenue === venue.name ? 'selected' : ''}`}
-              onClick={() => setSelectedVenue(venue.name)}
+              onClick={() => handleMarketingVenueClick(venue.name)}
             >
               <div className="card-image">
                 <img 
