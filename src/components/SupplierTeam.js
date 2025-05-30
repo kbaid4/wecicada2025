@@ -95,7 +95,7 @@ const SupplierTeam = () => {
               {item.name}
             </button>
           ))}
-          <UserProfile showName={false} />
+
         </div>
       </nav>
       <div className="supplierteam-content">

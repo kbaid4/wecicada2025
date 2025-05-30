@@ -97,7 +97,6 @@ const SupplierHomepage = () => {
               {item.name}
             </button>
           ))}
-          <UserProfile showName={false} />
           <LogoutButton className="nav-btn" style={{ color: '#A888B5', background: 'none', marginLeft: '12px' }} />
         </div>
       </nav>
@@ -108,7 +107,18 @@ const SupplierHomepage = () => {
           <div className="header-left">
             <div className="welcome-section" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <h1 className="welcome-text" style={{ margin: 0 }}>Welcome,</h1>
-              <UserProfile showName={true} className="welcome-username" />
+              <div className="welcome-username" style={{
+                color: '#441752', 
+                fontSize: '24px', 
+                fontWeight: 600,
+                maxWidth: '200px',
+                display: 'inline-block',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
+              }}>
+                {localStorage.getItem('supplierName') || localStorage.getItem('name') || 'Supplier'}
+              </div>
             </div>
             <div className="action-btns">
               <button className="primary-btn" onClick={() => navigate('/EditProfile')}>Edit Profile</button>

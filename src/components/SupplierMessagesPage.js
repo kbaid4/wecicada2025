@@ -71,7 +71,6 @@ const SupplierMessagesPage = () => {
         <div className="nav-section right">
           <button className="nav-btn" onClick={() => window.location.href='/SupplierWork'}>My Work</button>
           <button className="nav-btn" onClick={() => window.location.href='/SupplierTeam'}>My Team</button>
-          <UserProfile showName={false} />
         </div>
       </nav>
       <main className="content-area">

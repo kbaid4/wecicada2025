@@ -92,9 +92,11 @@ const EditProfile = () => {
         <div style={styles.backgroundOverlay}>
           <div style={styles.heroContent}>
             <div style={styles.heroHeader}>
-              <h1 style={styles.heroTitle}>La Place</h1>
+              <h1 style={styles.heroTitle}>{userData.username || 'Your Profile'}</h1>
               <div style={styles.buttonGroup}>
-
+                <button style={styles.connectButton}>Connect</button>
+                <button style={styles.dealButton}>DEAL</button>
+                <button style={styles.connectButton}>Feedback</button>
               </div>
             </div>
             <div style={styles.locationContainer}>
